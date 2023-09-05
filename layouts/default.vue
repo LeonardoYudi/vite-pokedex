@@ -13,8 +13,15 @@
     </div>
 </template>
 <script setup lang="ts">
-
+import { getAllPokemonNames } from '~/api/axios';
+import { useStoreBase } from '~/store/useStore';
 const isMobile = ref()
+const store = useStoreBase();
+
+onBeforeMount(async()=>{
+  const value = await getAllPokemonNames()
+  store.setPokemonDataBase(value);
+})
 
 onMounted(() => {
   handleResize();

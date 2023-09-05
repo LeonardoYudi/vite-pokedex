@@ -20,15 +20,17 @@
 </template>
 
 <script setup lang="ts">
-import { getAllPokemonNames } from '~/api/axios';
+import { useStoreBase } from '~/store/useStore';
 import clsx from 'clsx';
+const store = useStoreBase();
 const pokemons = ref()
 const search = ref('')
 const router = useRouter();
-onBeforeMount(async()=>{
-    pokemons.value = await getAllPokemonNames()
+const teste = ref();
+onMounted(()=>{
+    teste.value = store.getPokemonDataBase();
+    console.log(teste.value)
 })
-
 const filterNames = computed(()=>{
     if(search.value)return pokemons.value.filter((item : any) => item.name.toLowerCase().includes(search.value.toLowerCase()) && !item.name.includes('-')).map((item : any)=> item.name)
 })
