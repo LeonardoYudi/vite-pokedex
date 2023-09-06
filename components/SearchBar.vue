@@ -4,9 +4,10 @@
             type="text" 
             v-model="search" 
             placeholder="Pesquisar..."
-            class="w-full h-10 rounded-lg px-4 capitalize"
+            class="w-full h-10 rounded-lg px-4 capitalize outline-indigo-100"
         >
         <ul class="relative w-full max-h-60 overflow-y-scroll mt-2">
+            <li v-if="search && filterNames.length < 1" class="px-2 text-red-500 text-[0.865rem]">Sem resultados</li>
             <li v-for="(i, index) in sortedItems" :key="index" :class="clsx('border h-10 rounded-lg',{
                 'bg-neutral-50' : index%2 !== 0,
                 'bg-neutral-200' : index%2 === 0
@@ -20,13 +21,22 @@
 </template>
 
 <script setup lang="ts">
+import { useStoreBase } from '~/store/useStore';
 import { getAllPokemonNames } from '~/api/axios';
+
 import clsx from 'clsx';
+const store = useStoreBase();
+const router = useRouter();
 const pokemons = ref()
 const search = ref('')
-const router = useRouter();
+
 onBeforeMount(async()=>{
-    pokemons.value = await getAllPokemonNames()
+  if(!store.getPokemonDataBase){
+    pokemons.value = await getAllPokemonNames();
+    store.setPokemonDataBase(pokemons.value);
+  }else{
+    pokemons.value = store.getPokemonDataBase;
+  }
 })
 
 const filterNames = computed(()=>{

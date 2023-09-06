@@ -55,7 +55,6 @@ definePageMeta({
 import { getPokemon } from '~/api/axios';
 import { Left } from '@icon-park/vue-next';
 import  Heart  from "@/assets/icons/hearth.vue"
-import { generateRandonPokemon } from '~/api/axios';
 const router = useRouter();
 const route = useRoute();
 const pokemon = ref()

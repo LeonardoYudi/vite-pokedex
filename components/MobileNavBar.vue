@@ -3,12 +3,12 @@
       <ul class="flex items-center h-20 justify-evenly">
         <li class="w-1/5 flex justify-center items-center">
           <NuxtLink to="/">
-            
+            Home
           </NuxtLink>
         </li>
         <li class="w-1/5 flex justify-center items-center">
-          <NuxtLink to="/">
-            
+          <NuxtLink to="/types">
+            Types
           </NuxtLink>
         </li>
         <li class="w-1/5 flex justify-center items-center">
@@ -21,13 +21,13 @@
           </button>
         </li>
         <li class="w-1/5 flex justify-center items-center">
-          <NuxtLink to="/">
-            
+          <NuxtLink to="/favorites">
+            Favorites
           </NuxtLink>
         </li>
         <li class="w-1/5 flex justify-center items-center">
           <NuxtLink to="/">
-            
+            Me
           </NuxtLink>
         </li>
       </ul>

@@ -1,5 +1,5 @@
 <template>
-    <div v-if="isMobile" class="h-screen flex flex-col">
+    <div v-if="isMobile" class="h-screen max-h-screen flex flex-col">
       <main class="w-full h-full p-2 bg-neutral-100">
         <slot/>
       </main>
@@ -13,7 +13,7 @@
     </div>
 </template>
 <script setup lang="ts">
-
+import { useStoreBase } from '~/store/useStore';
 const isMobile = ref()
 
 onMounted(() => {
