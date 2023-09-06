@@ -43,4 +43,22 @@ async function generateRandonPokemon(){
     }
 }
 
-export {getAllPokemonNames, getPokemon, getPokemonType, generateRandonPokemon}
+async function getPokemonsTypes(){
+    try{
+        const response = await axios.get('https://pokeapi.co/api/v2/type');
+        return response.data.results;
+    }catch(error){
+        return error;
+    }
+}
+
+async function getTypeData(type){
+    try{
+        const response = await axios.get(`https://pokeapi.co/api/v2/type/${type}`);
+        return response.data;
+    }catch(error){
+        return error;
+    }
+}
+
+export {getAllPokemonNames, getPokemon, getPokemonType, generateRandonPokemon, getPokemonsTypes, getTypeData}

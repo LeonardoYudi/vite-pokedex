@@ -3,19 +3,24 @@ import { defineStore } from "pinia";
 export const useStoreBase = defineStore('store-base',()=>{
     const state = ref({
         pokemonDataBase : null,
+        allPokemonTypes : null,
     })
     
-    function getPokemonDataBase(){
-        return state.value.pokemonDataBase;
+    const getPokemonDataBase = computed<any>(() => state.value.pokemonDataBase);
+    const getAllPokemonsTypes = computed<any>(() => state.value.allPokemonTypes);
+
+    function setPokemonDataBase(data : any) {
+        state.value.pokemonDataBase = data;
     }
 
-    function setPokemonDataBase(pokemonDataBase : any) {
-        state.value.pokemonDataBase = pokemonDataBase;
-        console.log('Setado',pokemonDataBase)
+    function setAllPokemonTypes(data : any) {
+        state.value.allPokemonTypes = data;
     }
 
     return{
         getPokemonDataBase,
-        setPokemonDataBase
+        getAllPokemonsTypes,
+        setPokemonDataBase,
+        setAllPokemonTypes
     }
 })
