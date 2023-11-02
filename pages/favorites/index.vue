@@ -1,6 +1,6 @@
 <template>
     <div>
-        Favorites
+        Come back other time...
     </div>
 </template>
 

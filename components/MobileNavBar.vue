@@ -1,15 +1,15 @@
 <template>
     <nav class="bg-slate-500 p-2">
       <ul class="flex items-center h-20 justify-evenly border rounded-full bg-slate-100">
-        <li class="w-1/5 flex justify-center items-center">
-          <NuxtLink to="/">
-            Home
-          </NuxtLink>
+        <li class="w-1/5 h-full flex justify-center items-center">
+          <button class="h-full w-full justify-center items-center rounded-l-full">
+            <NuxtLink to="/">Home</NuxtLink>
+          </button>
         </li>
-        <li class="w-1/5 flex justify-center items-center">
-          <NuxtLink to="/types">
-            Types
-          </NuxtLink>
+        <li class="w-1/5 h-full flex justify-center items-center">
+          <button class="h-full w-full justify-center items-center">
+            <NuxtLink to="/types">Types</NuxtLink>
+          </button>
         </li>
         <li class="w-1/5 flex justify-center items-center">
           <button @click="randonGenerate" class="border shadow-md w-12 h-12 rounded-full flex justify-center items-center">
@@ -20,15 +20,15 @@
             >
           </button>
         </li>
-        <li class="w-1/5 flex justify-center items-center">
-          <NuxtLink to="/favorites">
-            Favorites
-          </NuxtLink>
+        <li class="w-1/5 h-full flex justify-center items-center">
+          <button class="h-full w-full justify-center items-center">
+            <NuxtLink to="/favorites">Favorites</NuxtLink>
+          </button>
         </li>
-        <li class="w-1/5 flex justify-center items-center">
-          <NuxtLink to="/">
-            About
-          </NuxtLink>
+        <li class="w-1/5 h-full flex justify-center items-center">
+          <button class="h-full w-full justify-center items-center rounded-r-full">
+            <NuxtLink to="/about">About</NuxtLink>
+          </button>
         </li>
       </ul>
     </nav>
