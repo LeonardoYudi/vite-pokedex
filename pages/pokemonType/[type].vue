@@ -6,11 +6,14 @@
             class="w-16 h-16 animate-bounce"
         >
     </div>
-    <div v-else class="p-4 flex flex-col items-center gap-3">
-        <h1 class="text-3xl font-semibold capitalize">{{ typeData.name }}</h1>
-        <div class="w-full grid grid-cols-2 gap-4 max-h-96 overflow-y-scroll">
-            <div v-for="move in typeData.moves" class="capitalize border h-10 flex justify-center items-center rounded-lg">
-            {{ move.name }}
+    <div v-else >
+        <h1 class="text-3xl font-semibold capitalize">Moves {{ typeData.name }} </h1>
+        <div class="grid grid-cols-2 gap-2">
+            <div v-for="move in typeData.moves" class="flex items-center gap-3 capitalize border h-20 px-3 rounded-lg shadow-md">
+                <div>
+                    <IconType :pokemonType="typeData.name"/>
+                </div>
+                <span class="font-semibold"> {{ move.name }} </span>
             </div>
         </div>
     </div>
@@ -20,7 +23,7 @@ const route = useRoute()
 const typeData = ref()
 const isLoading = ref(true)
 import { getTypeData } from '~/api/axios';
-
+import IconType from '~/components/IconType.vue';
 onMounted(async()=>{
     if(route.params.type){
        try{
