@@ -61,4 +61,13 @@ async function getTypeData(type){
     }
 }
 
-export {getAllPokemonNames, getPokemon, getPokemonType, generateRandonPokemon, getPokemonsTypes, getTypeData}
+async function getMoveData(url){
+    try{
+        const response = await axios.get(url);
+        return response.data;
+    }catch(error){
+        return error;
+    }
+}
+
+export {getAllPokemonNames, getPokemon, getPokemonType, generateRandonPokemon, getPokemonsTypes, getTypeData, getMoveData}
