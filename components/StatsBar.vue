@@ -1,7 +1,7 @@
 <template>
-    <section class="flex items-center w-full gap-2">
-        <div :class="clsx('flex items-center rounded-lg p-1')"> 
-            <span :class="clsx('uppercase font-bold text-sm w-10',{
+    <section class="flex items-center w-full">
+        <div class="flex items-center rounded-lg p-1 w-[120px] gap-1"> 
+            <span :class="clsx('uppercase font-bold text-sm w-10 gap',{
                 'text-[#94BC4A]' : type === 'bug',
                 'text-[#736C75]' : type === 'dark',
                 'text-[#6A7BAF]' : type === 'dragon',
@@ -21,7 +21,7 @@
                 'text-[#89A1B0]' : type === 'steel',
                 'text-[#539AE2]' : type === 'water'
             })"> {{ nameStatus }} </span>
-            <span class="text-slate-500"> {{ statusValue }} </span>
+            <span class="text-slate-500 font-semibold"> {{ statusValue }} </span>
         </div>
         <div class="flex items-center w-full bg-slate-200 rounded">
             <div :style="{width:widthStat+'%'}" :class="clsx(`h-2 rounded`,{
@@ -63,6 +63,7 @@ const props = defineProps({
 const nameStatus = ref('')
 const statusValue = ref('')
 const widthStat = ref('')
+
 function replaceTextStat(status : string){
     if(status === 'attack'){
         nameStatus.value = 'atk'

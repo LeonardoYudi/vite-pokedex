@@ -1,6 +1,6 @@
 <template>
-    <nav class="border-2">
-      <ul class="flex items-center h-20 justify-evenly">
+    <nav class="bg-slate-500 p-2">
+      <ul class="flex items-center h-20 justify-evenly border rounded-full bg-slate-100">
         <li class="w-1/5 flex justify-center items-center">
           <NuxtLink to="/">
             Home
@@ -12,7 +12,7 @@
           </NuxtLink>
         </li>
         <li class="w-1/5 flex justify-center items-center">
-          <button @click="randonGenerate" class="border shadow-md w-16 h-16 rounded-full flex justify-center items-center">
+          <button @click="randonGenerate" class="border shadow-md w-12 h-12 rounded-full flex justify-center items-center">
             <img 
               src="https://upload.wikimedia.org/wikipedia/commons/5/53/Pok%C3%A9_Ball_icon.svg" 
               alt="Pokeball"
@@ -27,7 +27,7 @@
         </li>
         <li class="w-1/5 flex justify-center items-center">
           <NuxtLink to="/">
-            Me
+            About
           </NuxtLink>
         </li>
       </ul>

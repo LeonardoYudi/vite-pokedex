@@ -1,6 +1,6 @@
 <template>
    <section class="w-full h-full">
-        <!-- <SearchBar/> -->
+        <!-- <SearchBar class="z-10"/> -->
         <div v-if="isLoading" class="w-full h-full flex items-center justify-center">
             <img 
                 src="https://upload.wikimedia.org/wikipedia/commons/5/53/Pok%C3%A9_Ball_icon.svg" 
@@ -10,13 +10,13 @@
         </div>
         <div v-else class="flex flex-col border shadow-sm rounded-3xl bg-white">
             <GradienteCard :type="pokemon.types[0].type.name">
-                <div class="flex justify-between items-center">
-                    <button @click="$router.push('/')">
-                        <Left size="32" class="hover:fill-slate-400"/>
-                    </button>
+                <div class="flex items-center justify-between">
+                    <div class="w-8 h-1"></div>
                     <span class="font-bold italic">#{{ pokemonId }}</span>
-                    <button class="w-8 flex justify-center items-center">
-                        <Heart class="stroke-red-400"/>
+                    <button @click="favoritado = !favoritado" class="w-8 h-8 flex justify-center items-center bg-slate-50 rounded-full">
+                        <Heart :class="clsx('w-6 h-6',{
+                            'fill-yellow-400 stroke-none' : favoritado,
+                        })"/>
                     </button>
                 </div>
             
@@ -55,11 +55,13 @@ definePageMeta({
 import { getPokemon } from '~/api/axios';
 import { Left } from '@icon-park/vue-next';
 import  Heart  from "@/assets/icons/hearth.vue"
+import clsx from 'clsx';
 const router = useRouter();
 const route = useRoute();
-const pokemon = ref()
-const pokemonId = ref('')
-const isLoading = ref(true)
+const pokemon = ref();
+const pokemonId = ref('');
+const isLoading = ref(true);
+const favoritado = ref(false);
 onMounted(async()=>{
     if(route.params.pokemon){
        try{
