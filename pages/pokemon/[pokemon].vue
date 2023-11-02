@@ -23,7 +23,7 @@
                 <div class="flex flex-col items-center justify-center">
                     <img 
                         class="w-36 h-36"
-                        :src="pokemon.sprites.front_default" 
+                        :src="urlImg" 
                         :alt="`img_${pokemon.name}`"
                     >
                 </div>
@@ -62,6 +62,7 @@ const pokemon = ref();
 const pokemonId = ref('');
 const isLoading = ref(true);
 const favoritado = ref(false);
+const urlImg = ref()
 onMounted(async()=>{
     if(route.params.pokemon){
        try{
@@ -79,6 +80,12 @@ onMounted(async()=>{
         pokemonId.value = '0'+pokemon.value.id
        }else{
         pokemonId.value = pokemon.value.id
+       }
+
+       if(pokemon.value.sprites.other.home.front_default){
+        urlImg.value = pokemon.value.sprites.other.home.front_default;
+       }else{
+        urlImg.value = pokemon.value.sprites.front_default;
        }
     }
 })
