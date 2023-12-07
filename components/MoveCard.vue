@@ -1,19 +1,20 @@
 <template>
-    <div @click="isOpen = !isOpen" class="border shadow-md rounded-lg px-3 py-2"> 
-        <div class="flex items-center gap-3 capitalize h-20">
-            <IconType :pokemonType="typeMove"/>
-            <span class="font-semibold"> {{ MoveData.name }} </span>
+    <div @click="openPanel()" class="border shadow-md rounded-lg px-3 py-2"> 
+        <div>
+            <div class="flex items-center gap-3 capitalize h-20">
+                <IconType :pokemonType="typeMove"/>
+                <span class="font-semibold"> {{ MoveData.name }} </span>
+            </div>
         </div>
-        <p v-if="isOpen">
-            {{ MoveData.url }}
-        </p>
+        <div v-if="isOpen && moreInfosMove">
+            <p>{{`${moreInfosMove?.accuracy ? moreInfosMove?.accuracy : 'Dados indisponíveis'}` }}</p>
+        </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import { Move } from '@icon-park/vue-next';
-
-defineProps({
+import {getMoveData} from "@/api/axios"
+const props = defineProps({
     typeMove : {
         type : String,
         required : true
@@ -25,6 +26,14 @@ defineProps({
 })
 
 const isOpen = ref(false)
+const moreInfosMove = ref()
+async function openPanel(){
+    isOpen.value = !isOpen.value;
+    if(!moreInfosMove.value){
+        moreInfosMove.value = await getMoveData(props.MoveData.url)
+    }
+}
+
 </script>
 
 <style scoped>
